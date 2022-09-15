@@ -76,3 +76,32 @@ GROUP BY id_genero;
 
 
 DESCRIBE canciones;
+
+-- En el salón de Musimundos tenemos un cliente fanático de Willie Dixon, quiere comprar toda la colección de sus temas, pero NO le interesan los temas que sean de su etapa en el rock.
+-- Hagamos una consulta en la base de datos donde muestre todos los registros que contengan canciones con sus géneros, Y que el compositor sea Willie Dixon, Y que tengan el género Blues.
+-- Ingresá el nombre de la segunda canción que obtuviste.
+
+SELECT *
+FROM generos
+INNER JOIN canciones
+ON canciones.id_genero = generos.id AND generos.id != 1 AND canciones.compositor LIKE "%Willie Dixon";
+
+SELECT *
+FROM canciones 
+where compositor LIKE "%Willie Dixon%";
+
+
+-- Realizar una consulta sobre la tabla canciones con la siguiente información: 
+-- ● Solo los 10 primeros caracteres del nombre de la canción en mayúscula.
+-- ● Los años de antigüedad que tiene cada canción desde su publicación. Ej:25 años.
+-- ● El peso en KBytes en número entero (sin decimales, 1024 Bytes = 1 KB)
+-- ● El precio formateado con 3 decimales, Ej: $100.123
+-- ● El primer compositor de la canción (notar que si hay más de uno, estosse separan por coma)
+
+SELECT upper(nombre), ROUND(DATEDIFF(now(), publicada) / 365) AS YEARS, ROUND(bytes / 1024) AS bytes, ROUND(precio_unitario, 3)
+FROM canciones;
+
+SELECT * 
+FROM canciones;
+
+
